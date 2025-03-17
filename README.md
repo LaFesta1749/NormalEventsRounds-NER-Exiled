@@ -35,10 +35,12 @@ wins_required: 5
 ```
 
 ## Options:
+```yaml
 is_enabled	Enables/disables the plugin	true
 debug	Enables debug logs in the console	false
 webhook_url	Discord Webhook URL for event notifications	"your-webhook-url"
 wins_required	Wins required before notifications pause (reward)	5
+```
 
 ## 🎮 Events (Normal Games):
 1️⃣ Last Man Standing - If only one player is alive at the end of the round, they win.
