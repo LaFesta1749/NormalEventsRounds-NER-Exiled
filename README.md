@@ -14,7 +14,7 @@ A plugin for **SCP: Secret Laboratory** using **Exiled 9.5.1** that tracks and a
 1. **Download the latest release** from [GitHub Releases](https://github.com/yourrepo/NER/releases).
 2. Place the `NER.dll` file inside your **Exiled Plugins** folder:
 
-SCP Secret Laboratory/ ├── Exiled/ │ ├── Plugins/ │ │ ├── NER.dll
+Exiled/ │ ├── Plugins/ │ │ ├── NER.dll
 
 3. **Restart the server** to generate the `config.yml` file.
 
