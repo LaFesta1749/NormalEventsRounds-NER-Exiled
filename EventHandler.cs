@@ -12,6 +12,15 @@ namespace NER
         private Dictionary<string, float> scpDamageTracker = new();
         private string? firstEscapedPlayer = null;
 
+        public void AnnounceWinner(string winnerName, string eventName)
+        {
+            if (!NER.Instance.Config.EnableBroadcasts)
+                return;
+
+            string message = $"<color=yellow>[PARLAMATA EVENTS]</color> <color=green>{winnerName}</color> won <color=red>{eventName}</color>!";
+            Map.Broadcast(10, message); // Показва съобщението за 10 секунди
+        }
+
         public void OnPlayerDamage(HurtingEventArgs ev)
         {
             // Проверяваме дали целта е SCP
@@ -52,8 +61,12 @@ namespace NER
 
             if (!string.IsNullOrEmpty(winner))
             {
+                string winnerName = Player.Get(winner)?.Nickname ?? "Unknown";
+                string eventName = GetEventName(winner);
+
                 WinnersManager.AddWin(winner);
-                WebhookManager.SendWinNotification(winner, WinnersManager.GetWins(winner), GetEventName(winner));
+                WebhookManager.SendWinNotification(winner, WinnersManager.GetWins(winner), eventName);
+                AnnounceWinner(winnerName, eventName); // Изпращаме съобщение в играта
             }
 
             // Нулираме тракерите за следващия рунд

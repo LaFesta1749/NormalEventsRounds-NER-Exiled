@@ -15,6 +15,9 @@ namespace NER
         public string WebhookUrl { get; set; } = "https://your-webhook-url-here";
 
         [Description("Number of wins required for a reward.")]
-        public int WinsRequired { get; set; } = 3;
+        public int WinsRequired { get; set; } = 5;
+
+        [Description("Enable or disable in-game broadcasts for event winners.")]
+        public bool EnableBroadcasts { get; set; } = true;
     }
 }
