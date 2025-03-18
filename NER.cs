@@ -21,6 +21,14 @@ namespace NER
 
         private EventHandler? eventHandler;
 
+        public bool IsRoundPaused { get; set; } = false;
+
+        public void PauseRound()
+        {
+            IsRoundPaused = true;
+            Log.Info("Event tracking has been paused for this round.");
+        }
+
         public override void OnEnabled()
         {
             if (!Config.IsEnabled)

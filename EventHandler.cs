@@ -40,6 +40,14 @@ namespace NER
 
         public void OnRoundEnd(RoundEndedEventArgs ev)
         {
+            // Проверяваме дали текущият рунд е паузиран
+            if (NER.Instance.IsRoundPaused)
+            {
+                Log.Info("Round was paused. No event winners recorded.");
+                NER.Instance.IsRoundPaused = false; // Автоматично активиране на събитията за следващия рунд
+                return;
+            }
+
             string winner = DetermineWinner();
 
             if (!string.IsNullOrEmpty(winner))
